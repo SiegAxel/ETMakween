@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/Reserva.css' %}">
+{% endblock css %}
+{% block body %}
+<div class="row">
+    {% for servicio in servicios %}
+    <div class="col-sm-2">
+        <img class="thumbnail" src="{{ servicio.imagenURL }}" alt>
+        <div class="box-element product">
+            <h6><strong>{{ servicio.nombre }}</strong></h6>
+            <hr>
+            <button data-servicio={{servicio.id}} data-action="add" class="btn btn-outline-secondary add-btn update-carro">Añadir</button>
+            <h4 style="display: inline-block; float: right;">${{ servicio.precio }}</h4>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="row" id="tabla-2">
+        <div class="col-lg-12">
+
+            <br>
+
+            <div class="box-element">
+                <div class="cart-row">
+                    <div style="flex: 2;"></div>
+                    <div style="flex: 2;"><strong>Item</strong></div>
+                    <div style="flex: 1;"><strong>Precio</strong></div>
+                    <div style="flex: 1;"><strong>Cantidad</strong></div>
+                    <div style="flex: 1;"><strong>Total</strong></div>
+                </div>
+
+                {% for item in items %}
+                <div class="cart-row">
+                    <div style="flex: 2;"><img class="row-image" src="{{ item.servicio.imagenURL }}" alt=""></div>
+                    <div style="flex: 2;">{{ item.servicio.nombre }}</div>
+                    <div style="flex: 1;">${{ item.servicio.precio }}</div>
+                    <div style="flex: 1;">
+                        <p class="quantity">{{ item.cantidad}}</p>
+						<div class="quantity">
+							<img data-servicio="{{item.servicio.id}}" data-action="add" class="chg-quantity update-carro" src="{% static  'img/arrow-up.png' %}">
+					
+							<img data-servicio="{{item.servicio.id}}" data-action="remove" class="chg-quantity update-carro" src="{% static  'img/arrow-down.png' %}">
+						</div>
+                    </div>
+                    <div style="flex: 1;">${{ item.get_total }}</div>
+                </div>
+                {% endfor %}
+                <a class="btn btn-outline-dark" href="{% url 'IND' %}">&#x2190; Volver</a>
+
+                <br>
+                <br>
+
+                <table class="table">
+                    <tr>
+                        <th><h5>Items: <strong>{{ orden.get_items_carro }}</strong></h5></th>
+                        <th><h5>Total: <strong>${{ orden.get_total_carro }}</strong></h5></th>
+                        <th>
+                            <a style="float: right; margin: 5px;" class="btn btn-success" href="{% url 'CHK' %}">Proceder</a>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+{% block js %}
+<script type="text/javascript">
+    var user = '{{request.user}}'
+
+    function getToken(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getToken('csrftoken');
+
+function getCookie(name) {
+    var cookieArr = document.cookie.split(";");
+
+    for(var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+
+        if(name == cookiePair[0].trim()) {
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+
+    return null;
+}
+var cart = JSON.parse(getCookie('cart'))
+if(cart == undefined){
+    cart = {}
+    console.log('Carro creado')
+    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+}
+console.log('cart:',cart)
+</script>
+<script src="{% static 'js/carro.js' %}"></script>
+{% endblock js %}

@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/Registro.css' %}">
+        <style>
+            .background-radial-gradient {
+                background-color: hsl(219, 14%, 20%);
+                background-image: url('{% static 'img/Full-Banner.jpg' %}');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            .background-radial-gradient::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(35, 35, 35, 0.8);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+        </style>
+        {% load crispy_forms_tags %}
+        <title>Registrarse</title>
+    </head>
+    <body>
+        <section class="background-radial-gradient" style="overflow-y: scroll;">
+            <a href="{% url 'IND' %}">
+                <img class="logo" src="{% static 'img/logolight.png' %}" alt="Logo">
+            </a>
+            <div class="container" style="height: 100vh;">
+                <div class="row gx-lg-5 align-items-center mb-5">
+                    <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+                        <h1 class="my-5 display-5 fw-bold ls-tight"
+                            style="color: hsl(0, 0%, 100%)">
+                            Siempre listo,
+                            <br />
+                            <span style="color: hsl(0, 100%, 50%)">Siempre veloz.</span>
+                        </h1>
+                        <p class="mb-4 opacity-70" style="color: hsl(0, 0%, 85%)">Se parte del equipo de Makween.</p>
+                    </div>
+                    <div class="col-lg-6 mb-5 mb-lg-0 position-relative login-container">
+                        <div class="card bg-glass">
+                            <div class="card-body px-5 py-6 px-md-5" style="top:0%;" id="formulario">
+                                <form class="d-grid justify-content-center"
+                                      action="{% url 'REGIS' %}"
+                                      method="POST"
+                                      enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <button class="btn btn-primary btn-block mb-5 col-12"
+                                            type="submit"
+                                            style="justify-content: center;
+                                                   text-align: center;
+                                                   align-items: center;
+                                                   margin-bottom: 0"
+                                            id="boton1">Registrarse</button>
+                                </form>
+                                    
+                                <!-- Register buttons -->
+                                <p style="justify-content: center;
+                                          text-align: center;
+                                          align-items: center">¿Ya tienes una cuenta?</p>
+                                <a href="{% url 'LOGIN' %}">
+                                <button type="button"
+                                        id="btn-ingresar"
+                                        href="{% url 'LOGIN' %}"
+                                        style="justify-content: center;
+                                               text-align: center;
+                                               align-items: center;
+                                               margin-bottom: 0"
+                                        class="btn btn-primary btn-block mb-5 col-12">Ingresar</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+    <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://kit.fontawesome.com/bd7ca4c87f.js"
+            crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% comment %} <script src="{% static 'js/registro.js' %}"></script> {% endcomment %}
+</html>

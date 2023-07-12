@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/Contacto.css' %}">
+{% endblock css %}
+
+{% block body %}
+
+
+        
+                    <!--COMIENZO DE CONTACTO-->
+                <div class="container-fluid">
+                    <div id="contactanos">
+                        <h2>CONTACTANOS</h2>
+                    </div>
+                    <div class="contenedor"
+                         style="display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                gap: 1px">
+                        <div class="column division1"
+                             style="background: linear-gradient(to bottom,#dcdcdc, #6e6e6e )">
+                            <div class="contact">
+                                <div>
+                                    <a aria-label="Facebook"><i class="fa-brands fa-instagram fa-lg"></i> @TallerMakween
+                                    </a>
+                                </div>
+                                <div>
+                                    <a aria-label="Email"><i class="far fa-envelope"></i> Makween@taller.cl </a>
+                                </div>
+                                <div>
+                                    <a aria-label="Contact"><i class="fa-solid fa-phone"></i> +56 9 4444 3333 </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column division2"
+                             style="background: linear-gradient(to bottom,#dcdcdc, #6e6e6e )">
+                            <div>
+                                <form class="form" action="{% url 'CONT' %}" method="post">
+                                {% csrf_token %}
+                                    <p>Danos tu comentario o agenda una hora!</p>
+                                    <!-- Email input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="email"
+                                               id="formEmail"
+                                               name="formEmail"
+                                               class="form-control"
+                                               placeholder="Ingrese Email" />
+                                        <label class="form-label" for="formEmail">Email</label>
+                                    </div>
+                                    <!-- 2 column grid layout with text inputs for the first and last names -->
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <input type="text"
+                                                       id="formNombre"
+                                                       name="formNombre"
+                                                       class="form-control"
+                                                       placeholder="Ingrese Nombre" />
+                                                <label class="form-label" for="formNombre">Nombre</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-outline">
+                                                <input type="text"
+                                                       id="formApellido"
+                                                       name="formApellido"
+                                                       class="form-control"
+                                                       placeholder="Ingrese Apellido" />
+                                                <label class="form-label" for="formApellido">Apellido</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--telefono-->
+                                    <div class="form-outline mb-4">
+                                        <input type="tel"
+                                               id="formTelefono"
+                                               name="formTelefono"
+                                               class="form-control"
+                                               placeholder="Ingrese número de telefono"/>
+                                        <label class="form-label" for="for">Telefono</label>
+                                    </div>
+                                    <!--final telefono-->
+                                    <!--CUADRO DE MENSAJE-->
+                                    <div>
+                                        <label for="mi-textarea"></label>
+                                        <textarea id="mi-textarea"
+                                                  name="formMensaje"
+                                                  rows="4"
+                                                  cols="50"
+                                                  placeholder="Ingrese su mensaje..."
+                                                  style="resize: none"></textarea>
+                                    </div>
+                                    <!--final CUADRO DE MENSAJE-->
+                                    <!-- Submit button -->
+                                    <form class="d-grid justify-content-center" id="my-form">
+                                        <button type="submit"
+                                                id="btn-submit"
+                                                class="btn btn-primary btn-block mb-4 col-12">Enviar</button>
+                                    </form>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Final De CONTACTO-->
+                </div>
+{% endblock body %}
+    
+{% block js %}
+<script src="{% static 'js/contacto.js' %}"></script>
+{% endblock js %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+{% endblock css %}
+
+{% block body %}        
+         <div class="container-fluid" style="justify-content: center; align-items: center; text-align: center;">
+        <div class="container">
+          <img class="FotoPerfil"
+               src="{{ usuario.foto.url }}"
+               alt="Imagen de ejemplo"
+               style="max-width: 400px;
+                      max-height: 400px">
+          <div class="text">
+            <h1>{{ usuario.get_nombre }}</h1>
+            {% if usuario.is_mecanico %}
+              <h5>Categoria: Mecánico</h5>
+            {% else %}
+              <h5>Categoria: Cliente</h5>
+            {% endif %}
+            <p>
+              <!--Descripcion-->
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus inventore culpa vitae quasi dolore in, non at accusamus velit deleniti molestiae suscipit nulla. Repellendus illo rem doloremque, veniam debitis praesentium.
+            </p>
+          </div>
+        </div>
+      </div>
+      </body>
+      {% if usuario.is_mecanico %}
+        <a href="{% url 'ADMAIN' usuario.user.username %}">
+          <button class="anadirTrabajo"
+                  type="button"
+                  style="border: 1px solid gray;
+                         background-color: azure;
+                         margin-left: 40%">Ingresar a ambiente de Trabajo</button>
+        </a>
+      {% else %}
+      {% endif %}
+{% endblock body %}
+    
+{% block js %}
+{% endblock js %}

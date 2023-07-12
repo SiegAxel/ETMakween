@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/AcercadeNosotros.css' %}">
+{% endblock css %}
+
+{% block body %}
+  <!--Acerca de Nosotros-->
+  <main>
+      <div class="container-fluid" id="contAcerca">
+        <div class="row" id="acerca">
+          <div class="col-xs-6" >
+            <p class="texto"> En Rayo Makween, estamos comprometidos con brindar un servicio de calidad y confianza a todos nuestros clientes. Con más de 20 años de experiencia en el sector automotriz, nuestro equipo de expertos mecánicos está altamente capacitado para realizar todo tipo de reparaciones y mantenimiento en su vehículo. Además, nos enorgullece ofrecer un servicio amable y personalizado, asegurándonos de que nuestros clientes siempre se sientan satisfechos con el trabajo realizado en sus vehículos. ¡Confíe en nosotros para mantener su vehículo en perfecto estado de funcionamiento! </p>
+          </div>
+          <div class="col-xs-6" id="datos">
+            <div class="row">
+              <h3><span class="las la-building"></span>Direccion:</h3><h5> Calle Rayo Makween, justo al doblar en la Avenida MateTomate. </h5>
+            </div>
+            <div class="row">
+              <h3><span class="las la-envelope"></span>Email:</h3><h5>makween@duocucmecanico.cl</h5>
+            </div>
+            <div class="row">
+              <h3><span class="las la-clock"></span>Horario de atencion:</h3><h5>Nuestro horario en dia de semana es de 09:00 - 22:00 y los fines de semana de 09:00 - 17:00</h5>
+            </div>
+          </div>
+        </div> 
+      </div>
+  </main>
+  
+{% endblock body %}
+
+{% block js %}
+<script src="{% static 'js/Acercade.js' %}"></script>
+{% endblock js %}

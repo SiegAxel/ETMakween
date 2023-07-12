@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/AdminGal-Lightbox.css' %}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet"href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/AdminGal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/galeria.css' %}">
+
+    <title>Admin:Galeria</title>
+</head>
+
+<body>
+
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h2><span class="las la-car-side"></span> <span>Makween</span></h2>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="{% url 'ADMAIN' usuario.user.username %}"><span class="las la-igloo"></span>
+                        <span>Inicio</span></a>
+                </li>
+                <li>
+                    <a href="{% url 'ADTRA' usuario.user.username %}"><span class="las la-clipboard-list"></span>
+                        <span>Trabajos</span></a>
+                </li>
+                <li>
+                    <a href="{% url 'ADGALE' usuario.user.username %}" class="active"><span class="las la-images"></span>
+                        <span>Galeria</span></a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h2>
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                <span class="empName">Makween</span>
+            </h2>
+
+            <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input type="search" placeholder="Buscar..." />
+            </div>
+
+            <div class="user-wrapper">
+                <div class="notification">
+                    <span class="las la-bell"></span>
+                </div>
+                <img src="{{ usuario.foto.url }}" width="40px" height="40px" alt="">
+                <div>
+                    <h4>{{usuario.user.username }}</h4>
+                    <small>Mecanico</small>
+                </div>
+            </div>
+        </header>
+
+        <div class="modal fade" id="logModal" tabindex="-1" aria-labelledby="logModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="logModalLabel">Opciones de perfil</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                  <ul>
+                    <li><a href="#">Configuracion</a></li>
+                    <li><a href="{% url 'IND' %}">Cerrar Sesion</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        <main>
+            
+            <h1 class="text-center mb-4">Galeria de Trabajos</h1>
+            <section class="image-grid">
+                <div class="container-xxl">
+                    <div class="row gy-4">
+                             {% for item in t %}
+                            <div class="col-12 col-sm-6 col-md-4">
+                                <figure>
+                                    <a class="d-block" href="{% url 'DETA' item.idTrabajo %}">
+                                        <img width="1920"
+                                             height="1280"
+                                             src="{{ item.foto.url }}"
+                                             class="img-fluid"
+                                             alt=""
+                                             data-caption="Trabajo {{ item.idTrabajo }}">
+                                    </a>
+                                    <figcaption>
+                                        <h2>{{ item.titulo }}</h2>
+                                        <p>{{ item.descripcion }}</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+
+    </div>
+    </main>
+    <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/admin.js' %}"></script>
+    <script src="{% static 'js/adminGal.js' %}"></script>
+</body>
+</html>

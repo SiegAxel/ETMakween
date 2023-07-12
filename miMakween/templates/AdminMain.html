@@ -1,0 +1,240 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1,maximum-scale=1">
+        <link rel="stylesheet"
+              href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/Admin.css' %}">
+        <title>Admin:Inicio</title>
+    </head>
+    <body>
+        <input type="checkbox" id="nav-toggle">
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <h2 >
+                    <a href="{% url 'IND' %}" style="color: white; text-decoration: none;">
+
+                        <span class="las la-car-side" ></span> <span>Makween</span>
+                    </a>
+                </h2>
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                    <a href="{% url 'ADMAIN' usuario.user.username %}"><span class="las la-igloo"></span>
+                    <span>Inicio</span></a>
+            </li>
+            <li>
+            <a href="{% url 'ADTRA' usuario.user.username %}"><span class="las la-clipboard-list"></span>
+            <span>Trabajos</span></a>
+    </li>
+    <li>
+    <a href="{% url 'ADGALE' usuario.user.username %}" class="active"><span class="las la-images"></span>
+    <span>Galeria</span></a>
+</li>
+</ul>
+</div>
+</div>
+<div class="main-content">
+    <header>
+        <h2>
+            <label for="nav-toggle">
+                <span class="las la-bars"></span>
+            </label>
+            <a href="{% url 'IND' %}" style="color: rgb(0, 0, 0); text-decoration: none;>
+                <span class="empName">Makween</span>
+            </a>
+        </h2>
+        <div class="search-wrapper">
+            <span class="las la-search"></span>
+            <input type="search" placeholder="Buscar..." />
+        </div>
+        <div class="user-wrapper">
+            <div class="notification">
+                <span class="las la-bell"></span>
+            </div>
+            <img src="{{ usuario.foto.url }}" width="40px" height="40px" alt="">
+            <div>
+                <h4>{{ usuario.user.username }}</h4>
+                <small>Mecanico</small>
+            </div>
+        </div>
+    </header>
+    <div class="modal fade"
+         id="logModal"
+         tabindex="-1"
+         aria-labelledby="logModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logModalLabel">Opciones de perfil</h5>
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>
+                            <a href="#">Configuracion</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'IND' %}">Cerrar Sesion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="cards">
+            <div class="card-single">
+                <div>
+                    <h1>{{ usercount }}</h1>
+                    <span>Usuarios</span>
+                </div>
+                <div>
+                    <span class="las la-users"></span>
+                </div>
+            </div>
+            <div class="card-single" id="trabajos-card">
+                <div>
+                    <h1>{{ tcount }}</h1>
+                    <span>Trabajos</span>
+                </div>
+                <div>
+                    <span class="las la-clipboard-list"></span>
+                </div>
+            </div>
+            <div class="card-single">
+                <div>
+                    <h1>{{ meccount }}</h1>
+                    <span>Mecánicos</span>
+                </div>
+                <div>
+                    <span class="las la-user-tie"></span>
+                </div>
+            </div>
+        </div>
+        <div class="recientes-grid">
+            <div class="trabajos">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Trabajos Recientes</h3>
+                        <a href="{% url 'ADTRA' usuario.user.username %}">
+                            <button>
+                                Ver todos <span class="las la-arrow-right"></span>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="tabla-responsiva">
+                            <table width="100%" id="tbtrabajos">
+                                <thead>
+                                    <tr>
+                                        <td>Titulo Trabajo</td>
+                                        <td>Categoria Trabajo</td>
+                                        <td>Progreso Trabajo</td>
+                                        <td>Estado Trabajo</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in t %}
+                                        <tr>
+                                            <td>{{ item.titulo }}</td>
+                                            <td>{{ item.categoria }}</td>
+                                            <td>
+                                                <span class="status yellow"></span>
+                                                En espera
+                                            </td>
+                                            {% if item.publicar %}
+                                                <td>Aprobado</td>
+                                            {% else %}
+                                                <td>No Aprobado</td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetSawl.fire2@11"></script>
+<script src="{% static 'js/admin.js' %}"></script>
+<script>
+    function generatePassword() {
+        const passwordInput = document.querySelector('#password');
+        const randomPassword = Math.random().toString(36).slice(-8);
+        passwordInput.value = randomPassword;
+    }
+
+    function validarForm() {
+        const nombreInput = document.querySelector('#nombre');
+        const apellidosInput = document.querySelector('#apellidos');
+        const emailInput = document.querySelector('#email');
+        const categoriaInput = document.querySelector('#categoria');
+
+        if (nombreInput.value === '' || apellidosInput.value === '' || emailInput.value === '' || categoriaInput.value === '1') {
+            Sawl.fire('Por favor, complete todos los campos requeridos');
+            return;
+        }
+
+        if (nombreInput.value.length < 3) {
+            Sawl.fire('El nombre debe tener al menos 3 caracteres');
+        }
+
+        if (apellidosInput.value.length < 3) {
+            Sawl.fire('Los apellidos deben tener al menos 3 caracteres');
+        }
+
+    }
+
+    function validarForm() {
+        var nombre = document.getElementById("nombre").value;
+        var apellidos = document.getElementById("apellidos").value;
+        var email = document.getElementById("email").value;
+        var categoria = document.getElementById("categoria").value;
+        var password = document.getElementById("password").value;
+
+        if (nombre.length < 3 || nombre.length > 30) {
+            Swal.fire("El nombre debe tener entre 3 y 30 caracteres.");
+            return false;
+        } else if (apellidos.length < 3 || apellidos.length > 30) {
+            Swal.fire("Los apellidos deben tener entre 3 y 30 caracteres.");
+            return false;
+        } else if (email.length < 5 || email.length > 20) {
+            Swal.fire("El email debe tener entre 5 y 20 caracteres.");
+            return false;
+        } else if (categoria == 1) {
+            Swal.fire("Por favor seleccione una categoría.");
+            return false;
+        } else {
+            Swal.fire({
+                icon: 'Success',
+                title: 'Exito',
+                text: 'Mecánico añadido con exito',
+                footer: 'Recuerde entregarle su contraseña al trabajador'
+            })
+        }
+
+
+        // If all fields pass validation, submit form
+        document.getElementById("AnadirModal").submit();
+
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock css %}
+
+{% block body %}
+    <!--Contenido-->
+    <!--Posible Carrusel Ultimos Trabajos-->
+    <div class="row">
+      <section id="carusel" style="width:750px; margin: 0;">
+        <div id="carouselExampleCaptions" class="carousel slide">
+          <h1 style="text-align: center; justify-content: center;">Ultimos Trabajos</h1>
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            {% for item in trabajo %}
+            <a href="{% url 'DETA' item.idTrabajo %}">
+              <div class="carousel-item active">
+                <img src="{{ item.foto.url }}" class="d-block" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{{ item.titulo }}</h5>
+                  <a href="{% url 'GALE' %}">
+                    <p>Galeria de Trabajos</p>
+                  </a>
+                </div>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-primary">
+          <div class="box">
+            <h1>Categorias</h1>
+            <div class="slider">
+              <div class="slide">
+                <a href="{% url 'SEARCH' %}">
+                  <figure>
+                    <img src="{% static 'img/cat1.png' %}" alt="">
+                  </figure>
+                </a>
+              </div>
+              <div class="slide">
+                <a href="{% url 'SEARCH' %}">
+                  <figure>
+                    <img src="{% static 'img/cat2.png' %}" alt="">
+                  </figure>
+                </a>
+              </div>
+              <div class="slide">
+                <a href="{% url 'SEARCH' %}">
+                  <figure>
+                    <img src="{% static 'img/cat3.png' %}" alt="">
+                  </figure>
+                </a>
+              </div>
+              <div class="slide">
+                <a href="{% url 'SEARCH' %}">
+                  <figure>
+                    <img src="{% static 'img/cat4.png' %}" alt="">
+                  </figure>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="slider">
+            <div class="slide">
+              <a href="{% url 'SEARCH' %}">
+                <figure>
+                  <img src="{% static 'img/cat5.png' %}" alt="">
+                </figure>
+              </a>
+            </div>
+            <div class="slide">
+              <a href="{% url 'SEARCH' %}">
+                <figure>
+                  <img src="{% static 'img/cat6.png' %}" alt="">
+                </figure>
+              </a>
+            </div>
+            <div class="slide">
+              <a href="{% url 'SEARCH' %}">
+                <figure>
+                  <img src="{% static 'img/cat7.png' %}" alt="">
+                </figure>
+              </a>
+            </div>
+            <div class="slide">
+              <a href="{% url 'SEARCH' %}">
+                <figure>
+                  <img src="{% static 'img/cat8.png' %}" alt="">
+                </figure>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 style="text-align:center">Conocenos</h2>
+        <div class="row">
+          {% for item in usuario %}
+          {% if usuario.is_mecanico == true %}
+          <div class="column">
+            <div class="card">
+              <a href="{% url 'ADMAIN' item.user.username %}">
+                <img src="{{ item.foto.url }}" alt=" " style="width:100%">
+              </a>
+              <div class="container">
+                <h2>{{ item.user.username }}</h2>
+                <p class="title">Mecanico</p>
+              </div>
+            </div>
+          </div>
+          {% else %}
+          <div class="column">
+            <div class="card">
+              <a href="{% url 'PERFIL' item.user.username %}">
+                <img src="{{ item.foto.url }}" alt=" " style="width:100%">
+              </a>
+              <div class="container">
+                <h2>{{ item.user.username }}</h2>
+                <p class="title">Mecanico</p>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+{% endblock body %}
+
+{% block js %}
+<script src="{% static 'js/indexlog.js' %}"></script>
+{% endblock js %}
