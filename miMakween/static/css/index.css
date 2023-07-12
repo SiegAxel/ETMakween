@@ -1,0 +1,698 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  /*Fuente de escritura de la pagina*/
+}
+
+/*POSICION DEL CARRUSEL */
+#carusel {
+  display: flex !important; /*se ajusta dependiendo de lo que tiene alrededor*/
+  justify-content: center !important; /*esta opcion mueve el carrusel*/
+  position: relative; /*fija una posicion en la pagina*/
+}
+
+.carousel-item img {
+  height: 500px !important;
+  /*altura de la imagen*/
+  width: 500px !important;
+  /*ancho de la imagen*/
+}
+
+
+
+.carousel-inner {
+  width: 500px;
+  /*Ancho del contenedor*/
+  height: 500px;
+  /*Alto del contenedor*/
+}
+
+
+.carousel-caption a {
+  color: white; /*color de la letra*/
+  text-decoration: none; /*quita la linea debajo*/
+
+}
+
+.carousel-caption a:hover {
+  color: red; /*color de la letra al pasar el raton por encima*/
+}
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* INICIO CATEGORIA BANNER */
+/*Gradiente en el tope superior de la pagina*/
+
+body::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  /*Inicia el sombreado arriba de la pagina*/
+  left: 0;
+  /*Inicia el sombreado del lado izquierdo de la pagina*/
+  width: 100%;
+  /*aqui modifica el ancho del sombreado en el navbar*/
+  height: 100%;
+  /*aqui modifica la altura del sombreado en el navbar*/
+  background: linear-gradient(to bottom, #00000099 0%, rgba(0, 0, 0, 0) 50%);
+  /*SOMBREADO del NAVBAR*/
+}
+
+body {
+  /*COLOR DE LA PAGINA*/
+  background-color: #ffffff;
+  background-image: linear-gradient(to bottom, #ffffff, #ababab);
+  background-size: auto;
+}
+
+#Banner {
+  overflow: hidden;
+}
+
+#Banner img {
+  /*Modifica el tamaño la imagen del banner (camioneta roja)*/
+  width: 100%;
+  height: 100vh;
+}
+
+.banner-overlay {
+  position: absolute;
+  bottom: 0px;
+  /*esto modifica la altura del Triangulito de la foto del index(lo que esta encima de la foto y arriba del carrusel)*/
+  left: 30%;
+  /* donde empieza el triangulito*/
+  transform: translateX(-50%);
+  height: 100px;
+  /*Altura del triangulito*/
+  width: 95%;
+  /*Ancho del triangulito*/
+  background: linear-gradient(to bottom, #ababab, #dcdcdc);
+  /*color de adentro del triangulito*/
+  clip-path: polygon(0 0, 75% 0, 100% 100%, 100% 100%, 0 100%);
+  /*modifica el diseño del triangulito*/
+  background-blend-mode: overlay;
+}
+
+.banner-text {
+  position: absolute;
+  top: 30%;
+  /*Altura del texto del banner*/
+  left: 10%;
+  /*Donde empieza el texto del banner*/
+  transform: translateY(-50%);
+  color: #ffffff;
+  /*Color de texto*/
+  text-align: center;
+  /*alinea el texto al medio*/
+}
+
+.banner-text h1 {
+  font-size: 4rem;
+  /*TAMAÑO DEL TEXTO*/
+  margin: 0;
+  /*margen del texto*/
+}
+
+.banner-text h2 {
+  font-size: 2rem;
+  /*tamaño del texto "siempre veloz*/
+  margin: 0;
+  /*Margen del texto "siempre veloz"*/
+  font-weight: normal;
+  /*Ancho del texto.*/
+}
+
+
+/*Todo lo de @media es para que la pagina sea responsiva en tamaños mas pequeños */
+@media screen and (max-width: 768px) {
+  .banner-text {
+    top: 50%;
+    left: 5%;
+  }
+
+  .banner-text h1 {
+    font-size: 3rem;
+  }
+
+  .banner-text h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.content {
+  padding: 50px 0;
+}
+
+/* FIN CATEGORIA BANNER */
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* CATEGORIA NAV */
+/* Ajustar la transparencia del navbar */
+.navbar {
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.navbar.scrolled {
+  background-color: rgba(102, 102, 102, 0.6);
+}
+
+/* Logo */
+.logo-top {
+  display: inline-block;
+  max-height: 40px;
+  width: 200px;
+  height: 200px;
+}
+
+.logo-scroll {
+  display: none;
+}
+
+.navbar.scrolled .logo-top {
+  display: none;
+}
+
+.navbar.scrolled .logo-scroll {
+  display: inline-block;
+  max-height: 40px;
+  width: 200px;
+  height: 200px;
+}
+
+.nav-item .nav-link {
+  font-family: sans-serif bold;
+  font-size: medium;
+  color: black;
+}
+
+.nav-item .nav-link:hover {
+  font-family: sans-serif bold;
+  font-size: medium;
+  color: rgb(255, 0, 0);
+}
+
+.navbar.scrolled .nav-item .nav-link {
+  font-family: sans-serif bold;
+  font-size: medium;
+  color: rgb(255, 255, 255);
+}
+
+.navbar.scrolled .nav-item .nav-link:hover {
+  font-family: sans-serif bold;
+  font-size: medium;
+  color: rgb(255, 0, 0);
+}
+
+/* Ubicacion de los links de navegacion */
+.navbar-nav {
+  margin-left: auto;
+}
+
+/* La barra de busqueda */
+.navbar form {
+  margin-right: 0;
+  margin-left: 100px;
+  position: relative;
+}
+
+.navbar form:hover {
+  cursor: text;
+}
+
+/* Espaciado entre la barra de busqueda y los links */
+.navbar-collapse {
+  margin-left: auto;
+}
+
+/* Quitar el background color y borde de la barra de busqueda*/
+.form-control {
+  background-color: rgb(224, 224, 224);
+  border: white;
+}
+
+/* Paddin a la derecha de la barra de busqueda */
+.form-inline .form-control {
+  padding-right: 30px;
+}
+
+/* Estilo de barra de busqueda */
+.btn-outline-light {
+  position: absolute;
+  /* Add this to position the button relative to the search bar */
+  top: 0;
+  /* Add this to move the button to the top of the search bar */
+  right: 0;
+  /* Add this to move the button to the right of the search bar */
+  height: 50%;
+  /* Add this to make the button height match the search bar height */
+  width: 40px;
+  /* Add this to set the button width */
+  padding: 0;
+  /* Add this to remove any padding */
+  border: solid white;
+  /* Add this to remove any border */
+  background-color: black;
+}
+
+@media (max-width: 991px) {
+  #btn-go {
+    display: none;
+  }
+}
+
+#search-form {
+  margin-left: auto;
+}
+
+/* CATEGORIA NAV */
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* CATEGORIA NAVBARCOLLAPSED */
+
+.navbar.collapsed {
+  background-color: rgba(114, 113, 113, 0.837);
+}
+
+.navbar.scrolled.collapsed {
+  background-color: rgba(24, 24, 24, 0.875);
+}
+
+.navbar.collapsed .navbar-nav {
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.navbar-collapse a {
+  display: block;
+  padding: 10px;
+  margin: 5px 0;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar-collapse a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar.scrolled .navbar-collapse a:hover {
+  background-color: rgba(225, 225, 225, 0.61);
+}
+
+.navbar.collapsed .navbar-nav .nav-item {
+  margin-bottom: 10px;
+}
+
+.navbar-nav .nav-link span {
+  margin-right: 5px;
+}
+
+@media (min-width: 992px) {
+  .navbar.collapsed .navbar-nav {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .navbar.collapsed .navbar-nav .nav-item {
+    margin-bottom: 0;
+  }
+
+  .navbar.collapsed .nav-item .nav-link i {
+    display: inline-block;
+    margin-right: 5px;
+  }
+}
+
+/* CATEGORIA NAVBARCOLLAPSED */
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* INICIO CATEGORIA BUSQUEDAAV */
+
+#advanced-search-btn {
+  color: #ffffff;
+  font-size: small;
+  font-style: oblique;
+  text-decoration: none;
+}
+
+#advanced-search-dropdown {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: #c8c8c8;
+  border: 3px solid #414141;
+  border-radius: 0.25rem;
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#advanced-search-dropdown.show {
+  display: block;
+}
+
+#advanced-search-dropdown select:hover {
+  cursor: pointer;
+}
+
+#buscar-btn {
+  background-color: #ffffff;
+  color: #000000;
+  float: right;
+  margin-top: 16px;
+}
+
+#buscar-btn:hover {
+  background-color: #dddddd;
+  color: #c70000;
+  float: right;
+  margin-top: 16px;
+}
+
+@media (max-width: 767.98px) {
+  #advanced-search-dropdown {
+    position: static;
+    width: 45%;
+    margin-top: 0.5rem;
+  }
+}
+
+/* FIN CATEGORIA BUSQUEDAAV */
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* CATEGORIA LOGINBOX */
+
+#login-dropdown {
+  background-color: #c8c8c8;
+  border: 3px solid #414141;
+  font: bold;
+}
+
+#btn-registro {
+  background-color: rgb(13, 114, 222);
+  color: white;
+}
+
+#btn-registro:hover {
+  background-color: rgb(8, 80, 156);
+  color: white;
+}
+
+.form-control {
+  width: auto;
+}
+
+#login-dropdown form {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login-dropdown .d-flex {
+  width: 67%;
+  font: bold;
+}
+
+#login-dropdown .form-group {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#login-dropdown button {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+}
+
+#login-dropdown .text-center {
+  margin-top: 15px;
+}
+
+.form-group {
+  width: 100%;
+}
+
+button.btn.btn-primary.btn-block {
+  margin-top: 20px;
+}
+
+.text-center>span {
+  display: block;
+}
+
+/* CATEGORIA LOGINBOX */
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* CATEGORIA PIEDEPAGINA */
+
+footer {
+  background-color: #ababab;
+  background-image: linear-gradient(to bottom, #ababab 10%, #3f3f3f 20%);
+  color: #fff;
+  padding: 50px 0;
+  background-blend-mode: multiply;
+}
+
+.footer-logo img {
+  max-height: 40px;
+  width: 200px;
+  height: 200px;
+}
+
+.footer-nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footer-nav a {
+  color: #fff;
+  text-decoration: overline gray;
+  white-space: nowrap;
+}
+
+.footer-nav a i {
+  margin-right: 10%;
+}
+
+.footer-info {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.footer-contact {
+  text-align: right;
+}
+
+.footer-contact h2 {
+  text-align: right;
+}
+
+.footer-contact a {
+  color: #fff;
+  margin-left: 10px;
+  font-size: xx-large;
+}
+
+.fa-facebook:before {
+  content: "\f09a";
+}
+
+.fa-envelope:before {
+  content: "\f0e0";
+}
+
+.fa-share:before {
+  content: "\f1e0";
+}
+
+.fa-address-book:before {
+  content: "\f2b9";
+}
+
+footer .col-md-4:not(:last-child) {
+  border-right: 1px solid #888;
+  padding-right: 40px;
+}
+
+/* CATEGORIA PIEDEPAGINA */
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* CATEGORIA CATEGORIA */
+body {
+  background-color: white;
+  margin-top: 100px;
+  padding: 0;
+  width: 100%;
+  
+}
+
+.row {
+  justify-content: center;
+  /*pone todo lo que hay en el DIV al centro*/
+  --bs-gutter-x: 0px;
+  /*ancho del DIV del carrusel*/
+  --bs-gutter-y: 0px;
+  /*alto del DIV del carrusel*/
+}
+
+.box {
+  position: relative;
+  max-width: 90%;
+  /* Modifica el porcentaje a tu preferencia */
+  margin: 0 auto;
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+}
+
+.slide {
+  height: auto;
+  cursor: pointer;
+  font-size: 40px;
+  /* Modifica el tamano de fuente a tu preferencia */
+  float: left;
+  margin: 0;
+  /*left: 580px;/*Mueve de izquierda a derecha el carrusel, npi porque*/
+}
+
+.slide h5 {
+  text-align: center;
+}
+
+figure {
+  border-radius: 3px;
+  height: 180px;
+  width: 180px;
+  margin-left: 20px;
+  background: #ccc;
+  max-width: 200px;
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: montserrat;
+  font-weight: 600;
+  font-size: 20px;
+  color: grey;
+  margin: 1px 2px;
+}
+
+figure img {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.slick-next:before {
+  color: grey;
+}
+
+.slick-prev:before {
+  color: grey;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: orange;
+}
+
+.box h1 {
+  text-align: center;
+}
+
+/* CATEGORIA CATEGORIA */
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* CATEGORIA ABOUTUS */
+body {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-left: 22px;
+  margin-right: 22px;
+  margin-bottom: 10px;
+  height: 100%;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after,
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* CATEGORIA ABOUTUS */
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+#Clima {
+  background: #eeedec;
+  letter-spacing: 0.2em;
+  font-size: 0.8em;
+  max-width: 400px;
+}
+
+#caja {
+  margin-left: 60px;
+}

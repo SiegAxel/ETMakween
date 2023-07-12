@@ -1,0 +1,50 @@
+html,
+body {
+  overflow: auto;
+}
+
+.card {
+  background-color: rgb(178, 178, 178);
+  background: linear-gradient(to bottom, #ffffff, #7a7a7a);
+  background-blend-mode: difference;
+}
+
+
+
+#boton1 {
+  margin-bottom: 0 !important;
+}
+
+#btn-submit {
+  margin-left: auto;
+  margin-bottom: 0;
+}
+
+.logo {
+  position: absolute;
+  max-height: 40px;
+  width: 200px;
+  height: 200px;
+  margin-top: 2%;
+}
+
+@media screen and (max-width: 767px) {
+
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+
+}
+
+@media screen and (max-width: 1100px) and (max-height: 870px) {
+  #login-form {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+  }
+
+
+}

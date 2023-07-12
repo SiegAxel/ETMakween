@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  list-style-type: none;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+#acerca div{
+  margin: auto;
+}
+
+#acerca p{
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: large;
+}
+
+.texto{
+  transition: color 1.5s ease-in;   /*luego de 1.5 seg, aparece ease-in (aparece de a poco)  y el ease-in-out (aparece y desaparece de a poco*/
+  color: rgba(255, 255, 255, 0);
+}
+
+.texto.scroll {
+  font: bold larger;
+  font-style: oblique;
+  color: white;
+  margin-top: 30px;
+}
+
+
+#acerca {
+  transition: background 0.5s ease-in-out;
+  width: auto;
+  background: linear-gradient(to bottom, #000000d5 20%, rgba(0, 0, 0, 0) 50%);
+  height: 650px;
+  margin: 150px;
+  border: solid 0.2rem;
+  border-color: rgba(158, 155, 155, 0);
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to bottom, rgba(204, 10, 10, 0.773) 20%, rgba(0, 0, 0, 0.349) 50%);
+  margin-bottom: 100px;
+}
+
+
+
+
+#datos {
+  text-align: center;
+  justify-content: center;
+}
+
+
+#datos h6{
+  margin: 1rem;
+}

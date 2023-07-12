@@ -1,0 +1,122 @@
+ /* Ajustar la transparencia del navbar */
+ .navbar {
+     background-color: rgba(0, 0, 0, 0);
+     transition: background-color 0.5s ease-in-out;
+ }
+
+
+
+ .navbar.scrolled {
+     background-color: rgba(102, 102, 102, 0.6);
+ }
+
+ /* Logo */
+ .logo-top {
+     display: inline-block;
+     max-height: 40px;
+     width: 200px;
+     height: 200px;
+ }
+
+ .logo-scroll {
+     display: none;
+ }
+
+ .navbar.scrolled .logo-top {
+     display: none;
+ }
+
+ .navbar.scrolled .logo-scroll {
+     display: inline-block;
+     max-height: 40px;
+     width: 200px;
+     height: 200px;
+ }
+
+
+ .nav-item .nav-link {
+     font-family: sans-serif bold;
+     font-size: medium;
+     color: black;
+ }
+
+ .nav-item .nav-link:hover {
+     font-family: sans-serif bold;
+     font-size: medium;
+     color: rgb(255, 0, 0);
+ }
+
+ .navbar.scrolled .nav-item .nav-link {
+     font-family: sans-serif bold;
+     font-size: medium;
+     color: rgb(255, 255, 255);
+ }
+
+ .navbar.scrolled .nav-item .nav-link:hover {
+     font-family: sans-serif bold;
+     font-size: medium;
+     color: rgb(255, 0, 0);
+ }
+
+ /* Ubicacion de los links de navegacion */
+ .navbar-nav {
+     margin-left: auto;
+ }
+
+ /* La barra de busqueda */
+ .navbar form {
+     margin-right: 0;
+     margin-left: 100px;
+     position: relative;
+ }
+
+ .navbar form:hover {
+     cursor: text;
+ }
+
+ /* Espaciado entre la barra de busqueda y los links */
+ .navbar-collapse {
+     margin-left: auto;
+ }
+
+ /* Quitar el background color y borde de la barra de busqueda*/
+ .form-control {
+     background-color: rgb(224, 224, 224);
+     border: white;
+ }
+
+ /* Paddin a la derecha de la barra de busqueda */
+ .form-inline .form-control {
+     padding-right: 30px;
+ }
+
+ /* Estilo de barra de busqueda */
+ .btn-outline-light {
+     position: absolute;
+     /* Add this to position the button relative to the search bar */
+     top: 0;
+     /* Add this to move the button to the top of the search bar */
+     right: 0;
+     /* Add this to move the button to the right of the search bar */
+     height: 50%;
+     /* Add this to make the button height match the search bar height */
+     width: 40px;
+     /* Add this to set the button width */
+     padding: 0;
+     /* Add this to remove any padding */
+     border: solid white;
+     /* Add this to remove any border */
+     background-color: black;
+ }
+
+ @media (max-width: 991px) {
+    #btn-go {
+      display: none;
+    }
+  }
+
+ #search-form {
+    margin-left: auto;
+  }
+
+

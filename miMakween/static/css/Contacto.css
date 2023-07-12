@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+
+.column .division1 {
+  color: #333;
+  padding-bottom: 500px;
+  border: 1px solid #ccc;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  border-radius: 50px 0px 50px 0px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+#mi-textarea{
+  width: 100%;
+  
+}
+
+.column .division2 {
+  color: #afafaf;
+  font-size: 1.2rem;
+  padding: 0;
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 0px;
+  margin-bottom: 50%;
+}
+
+#contactanos h2 {
+  text-align: center;
+  
+}
+
+.division2 p {
+  text-align: center;
+}
+
+
+#btn-Enviar {
+  margin-left: auto;
+  position: relative;
+
+}
+#contactanos {
+  margin-bottom: 100px;
+}
+
+@media screen and (max-width: 1030px) {
+
+  .contenedor {
+    width: 100%;
+    margin: auto;
+  }
+}

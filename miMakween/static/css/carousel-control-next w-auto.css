@@ -1,0 +1,10 @@
+.carousel-control-next {
+    right: -100px;
+}
+.carousel-control-prev{
+    left: -100px;
+}
+.card {
+    margin: 10px;
+  }
+  

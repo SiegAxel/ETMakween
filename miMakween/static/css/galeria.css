@@ -1,0 +1,64 @@
+/*#mi-cuadro {
+    width: 80%;
+    height: 500px;
+    margin: 0 auto;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    padding: 20px;
+    overflow: auto;  para agregar la barra de desplazamiento horizontal 
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  Define las columnas con un mínimo de 250px y máximo de espacio disponible 
+    grid-gap: 10px;  Define el espacio entre las imágenes 
+  }
+*/
+
+  /*
+  .columna {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    width: 150px;
+    margin: 10px;
+    flex-basis: 20%;
+  } 
+  */
+
+
+  #mi-cuadro {
+    width: 80%;
+    height: 500px;
+    margin: 0 auto;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    padding: 20px;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Alinea los elementos a la izquierda */
+  }
+  
+  #mi-cuadro .columna {
+    flex-basis: 20%; /* Establece el ancho base de cada columna al 20% (5 columnas en total) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+  }
+  
+  #mi-cuadro .columna img {
+    width: 840px;
+    height: 540px;
+    margin-bottom: 10px;
+    justify-items: center !important;
+    display: flex !important;
+  }
+  
+  .banner-overlay{
+    bottom: -24px !important;
+  }
+
+  .img-fluid {
+    height: 200px !important;
+  }
+

@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/*Gradiente en el tope superior de la pagina*/
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+body::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #00000099 0%, rgba(0, 0, 0, 0) 50%);
+  }
+
+  body {
+    background-color: #ffffff;
+    background-image: linear-gradient(to bottom, #ffffff, #ababab);
+    background-size: auto;
+  }
+
+#Banner {
+
+    overflow: hidden;
+}
+
+#Banner img{
+  width:  100%;
+  height: 100vh;
+}
+
+.banner-overlay {
+  position: absolute;
+  bottom: 0px;
+  left: 30%;
+  transform: translateX(-50%);
+  height: 100px;
+  width: 95%;
+  background-color: #ffffff;
+  background: linear-gradient(to bottom, #ababab, #dcdcdc);
+  clip-path: polygon(0 0, 75% 0, 100% 100%, 100% 100%, 0 100%);
+  background-blend-mode: overlay  ;
+}
+
+
+.banner-text {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  text-align: center;
+}
+
+
+
+.banner-text h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+.banner-text h2 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .banner-text {
+    top: 20%;
+    left: 5%;
+  }
+
+  .banner-text h1 {
+    font-size: 3rem;
+  }
+
+  .banner-text h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+.content {
+  padding: 50px 0;
+}
